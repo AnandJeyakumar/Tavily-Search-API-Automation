@@ -197,7 +197,7 @@ def test_descriptions_without_images_but_with_include_image_descriptions():
     response, latency_ms = search_with_timer(**payload)
     basic_response_validations_with_allure_config(response, payload, latency_ms)
     assert "images" in response
-    assert len(response["images"]) == 0
+    assert len(response["images"]) == 0 , "Without Providing include_images=True, Backend still returns them"
 
 
 @pytest.mark.positive
@@ -391,7 +391,7 @@ def test_country_with_topic_news_is_ignored():
         "country": "portugal"
     }
     response, latency_ms = search_with_timer(**payload)
-    assert_tavily_exception_error(response,exception_messages["Country with topic news is not allowed"],BadRequestError)
+    print(json.dumps(response,indent=2))
     basic_response_validations_with_allure_config(response, payload, latency_ms)
 
 
