@@ -3,3 +3,5 @@ requests
 tavily-python
 jsonschema
 allure-pytest
+pytest-rerunfailures
+pytest-xdist

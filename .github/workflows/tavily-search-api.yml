@@ -12,14 +12,19 @@ on:
           - Positive test cases
           - Negative test cases
           - Edge test cases
+      parallel:
+        description: "Run tests in parallel?"
+        required: true
+        type: choice
+        options:
+          - No (default)
+          - Yes (run in parallel)
 
-# Required for GitHub Pages deployment
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Avoid parallel deployments fighting each other
 concurrency:
   group: "pages"
   cancel-in-progress: true
@@ -61,6 +66,7 @@ jobs:
           TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
         run: |
           echo "Selected suite: ${{ github.event.inputs.test_suite }}"
+          echo "Parallel mode: ${{ github.event.inputs.parallel }}"
           MARKER=""
           case "${{ github.event.inputs.test_suite }}" in
             "Positive test cases") MARKER="-m positive" ;;
@@ -68,7 +74,13 @@ jobs:
             "Edge test cases")     MARKER="-m edge" ;;
             *) MARKER="" ;;  # All Test cases
           esac
-          pytest $MARKER --alluredir=allure-results --clean-alluredir -q
+          PARALLEL_FLAG=""
+          case "${{ github.event.inputs.parallel }}" in
+            "Yes (run in parallel)") PARALLEL_FLAG="-n auto" ;;   # requires pytest-xdist
+            *) PARALLEL_FLAG="" ;;
+          esac
+          # Re-run failing tests up to 2 times, 3s delay
+          pytest $MARKER $PARALLEL_FLAG --alluredir=allure-results --clean-alluredir -q --reruns 2 --reruns-delay 3
 
       - name: Generate Allure HTML report
         if: always()
@@ -83,7 +95,6 @@ jobs:
           echo "=== allure-report/data ==="
           ls -lah allure-report/data || true
 
-      # Keep downloadable artifacts for 30 days
       - name: Upload Allure results (raw)
         if: always()
         uses: actions/upload-artifact@v4
@@ -100,12 +111,10 @@ jobs:
           path: allure-report
           retention-days: 30
 
-      # REQUIRED: configure Pages before uploading the site
       - name: Configure GitHub Pages
         if: always()
         uses: actions/configure-pages@v5
 
-      # Upload the built site for Pages
       - name: Upload Pages artifact
         if: always()
         uses: actions/upload-pages-artifact@v3
@@ -114,7 +123,7 @@ jobs:
 
   deploy-pages:
     needs: tests
-    if: always()  # publish even if tests failed
+    if: always()
     runs-on: ubuntu-latest
     environment:
       name: github-pages

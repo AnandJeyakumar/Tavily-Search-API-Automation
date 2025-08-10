@@ -24,10 +24,6 @@ tavily = TavilyClient(api_key=API_KEY)
 
 
 
-# ------------------------
-# Test Cases for (a) Valid and Invalid Queries
-# ------------------------
-
 @pytest.mark.positive
 @allure.severity(allure.severity_level.CRITICAL)
 def test_valid_query_returns_results():
@@ -78,9 +74,6 @@ def test_short_query():
     payload = {"query": "W"}
     assert_tavily_exception_error(payload,"Query is too short. Min query length is 2 characters.",BadRequestError)
 
-# ------------------------
-# Test Cases for (B) Parameter validation (include_answer, include_images, search_depth, etc.)
-# ------------------------
 @pytest.mark.positive
 @allure.severity(allure.severity_level.CRITICAL)
 def test_include_answer_true():
@@ -147,8 +140,6 @@ def test_include_answer_with_auto_parameters():
     assert "auto_parameters" in response
     validate_answer_field(response)
 
-
-# Include images
 @pytest.mark.positive
 @allure.severity(allure.severity_level.CRITICAL)
 def test_include_images_true():
@@ -209,7 +200,6 @@ def test_descriptions_without_images_but_with_include_image_descriptions():
     assert len(response["images"]) == 0
 
 
-# search_depth Parameter Validation
 @pytest.mark.positive
 @allure.severity(allure.severity_level.NORMAL)
 def test_search_depth_basic():
@@ -241,7 +231,6 @@ def test_search_depth_invalid_value():
     }
     assert_tavily_exception_error(payload, exception_messages["invalidSearchDepth"])
 
-#auto_parameters Parameter Validation
 @pytest.mark.positive
 @allure.severity(allure.severity_level.NORMAL)
 def test_auto_parameters_true():
@@ -293,7 +282,6 @@ def test_auto_parameters_sets_search_depth():
     assert response["auto_parameters"]["topic"] in ["general", "news"]
     assert response["auto_parameters"]["search_depth"] in ["basic", "advanced"]
 
-# Topic
 @pytest.mark.positive
 @allure.severity(allure.severity_level.NORMAL)
 def test_topic_general():
@@ -320,7 +308,7 @@ def test_topic_news():
 @allure.severity(allure.severity_level.NORMAL)
 def test_topic_finance():
     payload = {
-        "query": "World economy",
+        "query": "world gdp",
         "topic": "finance"
     }
     response, latency_ms = search_with_timer(**payload)
@@ -372,9 +360,6 @@ def test_max_results_invalid_above_range():
     assert_tavily_exception_error(payload,exception_messages["invalidMaxResults"],BadRequestError)
 
 
-# ------------------------
-# Parameter Validation: country
-# ------------------------
 @pytest.mark.positive
 @allure.severity(allure.severity_level.NORMAL)
 def test_country_valid_with_topic_general():
@@ -409,9 +394,7 @@ def test_country_with_topic_news_is_ignored():
     assert_tavily_exception_error(response,exception_messages["Country with topic news is not allowed"],BadRequestError)
     basic_response_validations_with_allure_config(response, payload, latency_ms)
 
-# ------------------------
-# Parameter Validation: chunks_per_source
-# ------------------------
+
 @pytest.mark.positive
 @pytest.mark.parametrize("cps", [1, 2, 3])
 @allure.severity(allure.severity_level.NORMAL)
@@ -432,7 +415,6 @@ def test_chunks_per_source_valid_with_advanced(cps):
         elif cps == 1:
             assert chunks_seen == 1, f"Expected exactly 1 chunk, got {chunks_seen}"
         else:
-            # For cps=2 or 3, allow 0 but never exceed cps
             assert chunks_seen <= cps, f"Expected ≤{cps} chunks, got {chunks_seen}"
 
 @pytest.mark.negative
@@ -483,8 +465,8 @@ def test_start_and_end_date_valid_range():
 @pytest.mark.parametrize("bad_start,bad_end,bad_value", [
     ("01-01-2024", "2024-12-31", "01-01-2024"),
     ("2024/01/01", "2024-12-31", "2024/01/01"),
-    ("yesterday", "2024-12-31", "yesterday"),     # bad start
-    ("2024-01-01", "31-12-2024", "31-12-2024"),   # bad end
+    ("yesterday", "2024-12-31", "yesterday"),
+    ("2024-01-01", "31-12-2024", "31-12-2024"),
 ])
 @allure.severity(allure.severity_level.CRITICAL)
 def test_date_format_invalid_raises(bad_start, bad_end, bad_value):
@@ -581,7 +563,6 @@ def test_include_domains_whitelists_results_lenient():
     }
     response, latency_ms = search_with_timer(**payload)
     basic_response_validations_with_allure_config(response, payload, latency_ms)
-    # Lenient check: at least one result should come from the include list
     domains = [get_domain(r["url"]) for r in response["results"]]
     print("domains" , domains)
     assert any(d.endswith("wikipedia.org") or d.endswith("britannica.com") for d in domains), (
@@ -758,30 +739,23 @@ def validate_basic_response_structure(response: dict , payload):
     for idx, result in enumerate(response["results"]):
         title = result["title"].lower()
         content = result.get("content", "").lower()
-
-        # Check if any query word in title
         in_title = any(word in title for word in query_words)
-
-        # If not in title, check in content for this result only
         in_content = False
         if not in_title:
             in_content = any(word in content for word in query_words)
-
         print(f"Result {idx}: Title match? {in_title}, Content match? {in_content}")
-
         assert in_title or in_content, (
             f"Result at index {idx} does not contain any query words "
             f"in title or content. Title: '{result['title']}'"
         )
 
-# --- Reusable method to validate presence and structure of 'answer' field ---
+
 def validate_answer_field(response: dict):
     assert "answer" in response, "Expected 'answer' in response"
     assert isinstance(response["answer"], str), "'answer' should be a string"
     assert len(response["answer"]) > 0, "'answer' should not be empty"
 
 def is_valid_url(url):
-    # Checks if the string starts with http(s) and has no obvious errors
     url_pattern = re.compile(
         r'^https?://[^\s]+$',
         re.IGNORECASE
@@ -796,7 +770,6 @@ def topic_valid_cases_verification(response):
 
 
 def get_domain(url: str) -> str:
-    """Return registrable-ish domain from a URL (quick + good enough for tests)."""
     host = urlparse(url).netloc.split(":")[0].lower()
     if host.startswith("www."):
         host = host[4:]
