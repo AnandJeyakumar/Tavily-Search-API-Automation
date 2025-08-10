@@ -1,0 +1,44 @@
+{
+  "query": "Goog",
+  "follow_up_questions": null,
+  "answer": "Google is a leading technology company known for its search engine, cloud computing, and various software products. It offers a range of services including AI, cloud solutions, and developer tools. The company also provides educational resources and health initiatives.",
+  "images": [],
+  "results": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Google",
+      "title": "Google",
+      "content": "an American multinational corporation and technology company focusing on online advertising, search engine technology, cloud computing, computer software,",
+      "score": 0.56258565,
+      "raw_content": null
+    },
+    {
+      "url": "https://www.youtube.com/Google",
+      "title": "Google",
+      "content": "Welcome to Google's official YouTube channel \u2014 join us on our mission to organize the world's information and make it universally accessible and useful.",
+      "score": 0.27019233,
+      "raw_content": null
+    },
+    {
+      "url": "https://about.google/products/",
+      "title": "Google's products and services",
+      "content": "Image 1: Google logo Image 2: Google logo *   Image 80: The Google Find My Device logo, a stylized compass with four wide points in blue, red, green, and yellow, forming a circle around a gray center. *   Image 83: The Gboard logo, a multicolored keyboard icon with the Google \"G\" in the center. Google Keep *   Image 115: The Google Play Protect logo, a green shield icon with a white play button in the center. *   Image 133: The Google Scholar logo, an icon of a person's head wearing a blue graduation cap. *   Image 155: The Google Cloud logo, a multicolored cloud icon. *   Image 171: The Google Cloud logo, a multicolored cloud icon. *   Image 177: The Google Cloud logo, a multicolored cloud icon.",
+      "score": 0.23797458,
+      "raw_content": null
+    },
+    {
+      "url": "https://about.google/",
+      "title": "About Google: Our products, technology and company ...",
+      "content": "About Google: Our products, technology and company information - About Google Image 1: Google logo Image 2: Google logo With the Google AI Pro plan, college students in the U.S., Japan, Indonesia, Korea and Brazil can get expanded access to Gemini 2.5 Pro and Gemini features like Deep Research, plus 2 TB of storage. Google around the globe Deep Think \u2014 an enhanced reasoning mode for Gemini 2.5 \u2014 is now rolling out to Google AI Ultra subscribers in the Gemini app. *   Help Center *   Google.org *   Google for Health *   Grow with Google *   Google AI *   Google Cloud *   Google DeepMind *   Google for Developers *   Google Labs *   Google Research Image 9: Google logo in dark gray",
+      "score": 0.23553936,
+      "raw_content": null
+    },
+    {
+      "url": "https://apps.apple.com/us/app/google/id284815942",
+      "title": "Google on the App Store",
+      "content": "*   Apple *   Apps by Apple *   Apps by Apple *   Apps by Apple *   Shop Apple Watch *   Apple Watch Support *   Apps by Apple *   Shop Apple Vision Pro *   Apple TV app *   Apple One *   Made by Apple \u2022 Image Search: See something you like? \u2022 Google Search Widget: Search from your home screen or lock screen with the new Google widget. \u2022 Socratic app functionalities like step-by-step homework help on math, physics and word problems, and testing your knowledge with Questions and Answers are now fully supported within the Google app. \u2022 All searches in the Google app are protected by encrypting the connection between your device and Google. Learn more about what the Google app can do for you: https://search.google/",
+      "score": 0.15839584,
+      "raw_content": null
+    }
+  ],
+  "response_time": 1.58
+}

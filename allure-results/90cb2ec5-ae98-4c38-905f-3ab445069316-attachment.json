@@ -1,0 +1,13 @@
+{
+  "query": "Cristiano Ronaldo",
+  "include_domains": [
+    "wikipedia.org",
+    "britannica.com",
+    "fifa.com"
+  ],
+  "exclude_domains": [
+    "reddit.com",
+    "quora.com"
+  ],
+  "max_results": 10
+}

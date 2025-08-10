@@ -1,0 +1,44 @@
+{
+  "query": "History of space exploration",
+  "follow_up_questions": null,
+  "answer": null,
+  "images": [],
+  "results": [
+    {
+      "url": "https://aerospace.org/article/brief-history-space-exploration",
+      "title": "A Brief History of Space Exploration",
+      "content": "A Brief History of Space Exploration | The Aerospace Corporation The development of ballistic missiles, first used by Germany toward the end of World War II, paved the way for the launch vehicles that would fuel a space race between the Soviet Union and the United States. The Space Shuttle was the first reusable spacecraft to carry people into orbit; launch, recover, and repair satellites; conduct cutting-edge research; and help build the International Space Station. Image 6: International Space Station #### GPS III-7 Mission Sets Launch Record, Executes On Rapid Timescale The GPS III Space Vehicle-08 joins a satellite constellation providing resilient and adaptable Positioning, Navigation, and Timing for the warfighter. Image 11: U.S. Space Force graphic compiling images of 93 rockets lifting off of launch pads.",
+      "score": 0.98581,
+      "raw_content": null
+    },
+    {
+      "url": "https://www.britannica.com/science/space-exploration/Major-milestones",
+      "title": "Space exploration - Milestones, Achievements, History",
+      "content": "Image 18: Earth from space. Starting in the early 1970s, a series of Soviet (Russian from December 1991) space stations, the U.S. Skylab station, and numerous space shuttle flights provided Earth-orbiting bases for varying periods of human occupancy and activity. | July 17, 1975 | first international docking in space | Apollo and Soyuz spacecraft during Apollo-Soyuz Test Project | U.S., U.S.S.R. | July 1, 2004 | first spacecraft to orbit Saturn | Cassini-Huygens | U.S., European Space Agency, Italy | | Jan. 14, 2005 | first spacecraft to land on the moon of a planet other than Earth (Saturn's moon Titan) | Huygens probe of the Cassini-Huygens spacecraft | U.S., European Space Agency, Italy |",
+      "score": 0.9817,
+      "raw_content": null
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Space_exploration",
+      "title": "Space exploration",
+      "content": "First astronomical body space explorations ; Pioneer 10, 1974 for Mercury by Mariner 10, 1979 for Saturn by ; Pioneer 11, 1986 for Uranus by ; Voyager 2, 1989 for",
+      "score": 0.97684,
+      "raw_content": null
+    },
+    {
+      "url": "https://education.nationalgeographic.org/resource/history-space-exploration/",
+      "title": "The History of the Space Race",
+      "content": "During the time that has passed since the launching of the first artificial satellite in 1957, astronauts have traveled to the moon, probes have explored the solar system, and instruments in space have discovered thousands of planets around other stars. We human beings have been venturing into outer space since October 4, 1957, when the Union of Soviet Socialist Republics (U.S.S.R.) launched Sputnik, the first artificial satellite to orbit Earth. After learning of the United States\u2019 plan to launch an artificial satellite into space, it was Korolev who convinced and pushed the U.S.S.R. government to beat the U.S. in this endeavor, building the N1 rocket. In addition to launching the first artificial satellite, the first dog in space, and the first human in space, the U.S.S.R. achieved other space milestones ahead of the United States under Korolev\u2019s leadership.",
+      "score": 0.97387,
+      "raw_content": null
+    },
+    {
+      "url": "https://www.britannica.com/science/space-exploration",
+      "title": "Space exploration | History, Definition, & Facts",
+      "content": "Encyclopedia Britannica Encyclopedia Britannica Astronaut outside the International Space Station Full-hemisphere views of the Earth showing Hurricane Linda at its peak approaching Baja California on 1997 September 11. Astronaut outside the International Space Station Explore the ProCon debate Britannica Quiz Examples of such efforts include the development of the Curiosity Mars rover, the Cassini-Huygens mission to Saturn and its moons, and the development of major space-based astronomical observatories such as the Hubble Space Telescope. Other countries also viewed having a successful space program as an important indicator of national strength. These satellites quickly found numerous civilian uses in such areas as personal navigation, surveying and cartography, geology, air-traffic control, and the operation of information-transfer networks.",
+      "score": 0.96847,
+      "raw_content": null
+    }
+  ],
+  "response_time": 1.71
+}

@@ -1,0 +1,75 @@
+name: Tavily Search API Tests
+
+on:
+  workflow_dispatch:
+    inputs:
+      test_suite:
+        description: "Select tests to run"
+        required: true
+        type: choice
+        options:
+          - All Test cases
+          - Positive test cases
+          - Negative test cases
+          - Edge test cases
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          sudo apt-get update
+          sudo apt-get install -y default-jre
+          npm i -g allure-commandline --no-fund --no-audit
+
+      - name: Show installed packages
+        run: |
+          pip list
+          python -c "import tavily; print('tavily-python version:', getattr(tavily, '__version__', 'unknown'))"
+
+      - name: Run tests (with selected marker)
+        env:
+          TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+        run: |
+          echo "Selected suite: ${{ github.event.inputs.test_suite }}"
+          MARKER=""
+          case "${{ github.event.inputs.test_suite }}" in
+            "Positive test cases") MARKER="-m positive" ;;
+            "Negative test cases") MARKER="-m negative" ;;
+            "Edge test cases")     MARKER="-m edge" ;;
+            *) MARKER="" ;;  # All Test cases
+          esac
+          pytest $MARKER --alluredir=allure-results --clean-alluredir -q
+
+      - name: Generate Allure HTML report
+        if: always()
+        run: |
+          allure generate allure-results -o allure-report --clean || true
+
+      - name: Upload Allure results (raw)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results
+          path: allure-results
+          retention-days: 30
+
+      - name: Upload Allure report (HTML)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: allure-report
+          retention-days: 30

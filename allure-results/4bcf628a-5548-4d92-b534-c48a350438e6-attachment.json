@@ -1,0 +1,44 @@
+{
+  "query": "What is Python?",
+  "follow_up_questions": null,
+  "answer": "Python is a versatile programming language used for web development, data analysis, artificial intelligence, and automation. It is known for its readability and extensive library support. Python's syntax makes it easy to learn and use.",
+  "images": [],
+  "results": [
+    {
+      "url": "https://www.python.org/doc/essays/blurb/",
+      "title": "What is Python? Executive Summary",
+      "content": "What is Python? *   Python \u25b2 The Python Network *   Python Brochure Learn more about Python. *   ### Python Source Python 3.13.5 Python 3.13.5 Python 3.13.5 #### Download Python for Any OS *   Python Books *   Python Essays *   #### Python\u2019s standard documentation: download, browse or watch a tutorial. Python Docs *   Python Conferences *   Python Logo *   Python Wiki *   #### The Python Community *   Python News *   Python Events *   Python Events Archive *   Find events from the Python Community around the world! What is Python? What is Python? *   Python Brochure *   Python Books *   Python Essays *   Python Conferences *   Python Logo *   Python Wiki *   Python News *   Python Events *   Python Events Archive",
+      "score": 0.98516,
+      "raw_content": null
+    },
+    {
+      "url": "https://www.python.org/",
+      "title": "Welcome to Python.org",
+      "content": "- Python - Python Brochure Learn more about Python. - ### Python Source Python 3.13.5 Python 3.13.5 Python 3.13.5 #### Download Python for Any OS - Python Books - Python Essays Python Docs - Python Logo - #### The Python Community - Python News - Python Events - Python Events Archive - Find events from the Python Community around the world! More about defining functions in Python\u00a03 # Python 3: List comprehensions More about lists in Python\u00a03 Python Hi, Python. Latest: Python 3.13.5 Python 3.14.0 beta 4 is here! Python 3.14.0 beta 3 is here! - Python Brochure - Python Essays - Python Logo - Python News - Python Events - Python Events Archive - python-dev list",
+      "score": 0.98354,
+      "raw_content": null
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Python_(programming_language)",
+      "title": "Python (programming language) - Wikipedia",
+      "content": "Python was conceived in the late 1980s#cite_note-venners-interview-pt-1-43) by Guido van Rossum at Centrum Wiskunde & Informatica (CWI) in the Netherlands; it was conceived as a successor to the ABC \"ABC (programming language)\") programming language, which was inspired by SETL,#cite_note-AutoNT-12-44) capable of exception handling and interfacing with the Amoeba \"Amoeba (operating system)\") operating system.#cite_note-faq-created-15) Python implementation began in December,1989.#cite_note-timeline-of-python-45) Van Rossum assumed sole responsibility for the project, as the lead developer, until 12 July 2018, when he announced his \"permanent vacation\" from responsibilities as Python's \"benevolent dictator for life\" (BDFL); this title was bestowed on him by the Python community to reflect his long-term commitment as the project's chief decision-maker.#cite_note-lj-bdfl-resignation-46) (He has since come out of retirement and is self-titled \"BDFL-emeritus\".) In January 2019, active Python core developers elected a five-member Steering Council to lead the project.#cite_note-47)#cite_note-48)",
+      "score": 0.97864,
+      "raw_content": null
+    },
+    {
+      "url": "https://www.coursera.org/articles/what-is-python-used-for-a-beginners-guide-to-using-python",
+      "title": "What Is Python Used For? A Beginner's Guide - Coursera",
+      "content": "Python is a computer programming language often used to build websites and software, automate tasks, and conduct data analysis.",
+      "score": 0.97375,
+      "raw_content": null
+    },
+    {
+      "url": "https://aws.amazon.com/what-is/python/",
+      "title": "What is Python? - Python Language Explained - AWS",
+      "content": "Python is a programming language that is widely used in web applications, software development, data science, and machine learning (ML). The Python language has several use cases in application development, including the following examples: Developers also use a wide range of Python frameworks that provide all the necessary tools to build web applications faster and more easily. In addition, more than 137,000 Python libraries are available for various applications, including web development, data science, and machine learning (ML). Developers can use Python frameworks to build Python applications more quickly because they do not have to worry about low-level details such as how communications happen in the web application or how Python will make the program faster.",
+      "score": 0.97144,
+      "raw_content": null
+    }
+  ],
+  "response_time": 1.73
+}

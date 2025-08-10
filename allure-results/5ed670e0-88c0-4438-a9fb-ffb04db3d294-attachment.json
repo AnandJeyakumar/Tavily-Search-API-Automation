@@ -1,0 +1,6 @@
+{
+  "query": "History of the FIFA World Cup",
+  "search_depth": "advanced",
+  "chunks_per_source": 2,
+  "max_results": 3
+}

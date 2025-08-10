@@ -1,0 +1,5 @@
+pytest
+requests
+tavily-python
+jsonschema
+allure-pytest

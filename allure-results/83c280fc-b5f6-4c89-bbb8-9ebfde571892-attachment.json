@@ -1,0 +1,8 @@
+{
+  "query": "Cristiano Ronaldo biography",
+  "include_domains": [
+    "wikipedia.org",
+    "google.com"
+  ],
+  "max_results": 5
+}
