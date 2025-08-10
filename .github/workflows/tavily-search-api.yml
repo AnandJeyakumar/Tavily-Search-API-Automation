@@ -48,15 +48,16 @@ jobs:
           case "${{ github.event.inputs.test_suite }}" in
             "Positive test cases") MARKER="-m positive" ;;
             "Negative test cases") MARKER="-m negative" ;;
-            "Edge test cases")     MARKER="-m edge" ;;
+            "Edge test cases")     MARKER='-m edge";;
             *) MARKER="" ;;  # All Test cases
           esac
           pytest $MARKER --alluredir=allure-results --clean-alluredir -q
 
+      # Even if pytest fails, still generate & upload the report
       - name: Generate Allure HTML report
         if: always()
         run: |
-          allure generate allure-results -o allure-report --clean || true
+          allure generate allure-results -o allure-report --clean
 
       - name: Upload Allure results (raw)
         if: always()
