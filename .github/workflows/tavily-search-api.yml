@@ -48,7 +48,7 @@ jobs:
           case "${{ github.event.inputs.test_suite }}" in
             "Positive test cases") MARKER="-m positive" ;;
             "Negative test cases") MARKER="-m negative" ;;
-            "Edge test cases")     MARKER='-m edge";;
+            "Edge test cases")     MARKER="-m edge";;
             *) MARKER="" ;;  # All Test cases
           esac
           pytest $MARKER --alluredir=allure-results --clean-alluredir -q

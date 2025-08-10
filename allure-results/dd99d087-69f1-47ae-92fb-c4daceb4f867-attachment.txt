@@ -1,0 +1,1 @@
+Error: Query is too short. Min query length is 2 characters.

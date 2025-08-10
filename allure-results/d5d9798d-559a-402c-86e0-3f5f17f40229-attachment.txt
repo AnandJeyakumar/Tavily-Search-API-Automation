@@ -1,0 +1,50 @@
+{
+  "query": "Cristiano Ronaldo",
+  "follow_up_questions": null,
+  "answer": null,
+  "images": [],
+  "results": [
+    {
+      "title": "Wikipedia Cristiano Ronaldo - Wikipedia",
+      "url": "https://en.m.wikipedia.org/wiki/Transfer_of_Cristiano_Ronaldo_from_Real_Madrid_C.F._to_Juventus_F.C.",
+      "content": "December 6, 2024 - Cristiano Ronaldo dos Santos Aveiro GOIH ComM (Portuguese pronunciation: [k\u027ei\u0283\u02c8tj\u0250nu \u0281\u0254\u02c8naldu] ; born 5 February 1985) is a Portuguese professional footballer who plays as a forward for and captains both the Saudi Pro League club Al Nassr and the Portugal national team.",
+      "score": 0.79561085,
+      "raw_content": null
+    },
+    {
+      "title": "Wikipedia Career of Cristiano Ronaldo - Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Career_of_Cristiano_Ronaldo",
+      "content": "Cristiano Ronaldo is a Portuguese professional footballer who plays as a forward \"Forward (association football)\") for and captains \"Captain (association football)\") both Saudi Pro League club Al-Nassr and the Portugal national team. On 29 September 2002, Ronaldo made his debut in the Primeira Liga, playing for Sporting CP's first team against Braga, and on 7 October, he scored two goals against Moreirense in their 3\u20130 win. Ronaldo ended his first season in English football by scoring the opening goal in United's 3\u20130 win over Millwall in the 2004 FA Cup Final, earning his first trophy. Ronaldo won his second trophy in English football, the Football League Cup, after scoring the third goal in United's 4\u20130 final win over Wigan Athletic. \"Cristiano Ronaldo goal, Portugal vs Morocco World Cup 2018: Real Madrid forward breaks record with header\".",
+      "score": 0.78788257,
+      "raw_content": null
+    },
+    {
+      "title": "Cristiano Ronaldo - Wikipedia",
+      "url": "https://en.m.wikipedia.org/wiki/Cristiano_Ronaldo",
+      "content": "Cristiano Ronaldo dos Santos Aveiro (Portuguese pronunciation: [k\u027ei\u0283\u02c8tj\u0250nu \u0281\u0254\u02c8naldu] \u24d8; born 5 February 1985) is a Portuguese professional footballer who plays as a forward for and captains \u2026",
+      "score": 0.7636429,
+      "raw_content": null
+    },
+    {
+      "title": "Wikipedia Cristiano Ronaldo dos Santos Aveiro - Viquip\u00e8dia, l'enciclop\u00e8dia lliure",
+      "url": "https://ca.wikipedia.org/wiki/Cristiano_Ronaldo_dos_Santos_Aveiro",
+      "content": "2 weeks ago - Cristiano Ronaldo dos Santos Aveiro (portugu\u00e8s: Cristiano Ronaldo ) (Funchal, 5 de febrer de 1985) m\u00e9s conegut simplement com a Cristiano Ronaldo o amb el numer\u00f2nim CR7 (inicials i n\u00famero de la samarreta), \u00e9s un futbolista professional portugu\u00e8s que juga com a davanter i capitaneja l'Al",
+      "score": 0.7429634,
+      "raw_content": null
+    },
+    {
+      "title": "Simple English Wikipedia Cristiano Ronaldo - Simple English Wikipedia, the free encyclopedia",
+      "url": "https://simple.wikipedia.org/wiki/Cristiano_Ronaldo",
+      "content": "2 weeks ago - Cristiano Ronaldo dos Santos Aveiro GOIH ComM (Portuguese pronunciation: [k\u027ei\u0283\u02c8tj\u0250nu \u0281\u0254\u02c8naldu]; born 5 February 1985), better known as Ronaldo , is a Portuguese professional footballer who plays as the forward position. He is the captain of the Portuguese national team, and he is currently",
+      "score": 0.70580584,
+      "raw_content": null
+    }
+  ],
+  "response_time": 0.9
+}
+The query_words ['cristiano', 'ronaldo']
+Result 0: Title match? True, Content match? False
+Result 1: Title match? True, Content match? False
+Result 2: Title match? True, Content match? False
+Result 3: Title match? True, Content match? False
+Result 4: Title match? True, Content match? False

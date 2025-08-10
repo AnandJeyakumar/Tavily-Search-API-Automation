@@ -1,8 +1,0 @@
-{
-  "query": "Cristiano Ronaldo",
-  "exclude_domains": [
-    "reddit.com",
-    "quora.com"
-  ],
-  "max_results": 10
-}
