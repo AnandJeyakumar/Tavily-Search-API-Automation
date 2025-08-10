@@ -13,6 +13,12 @@ on:
           - Negative test cases
           - Edge test cases
 
+# needed for Pages deployment
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   tests:
     runs-on: ubuntu-latest
@@ -39,6 +45,12 @@ jobs:
           pip list
           python -c "import tavily; print('tavily-python version:', getattr(tavily, '__version__', 'unknown'))"
 
+      - name: Check API key is present
+        env:
+          TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+        run: |
+          python -c "import os; k=os.getenv('TAVILY_API_KEY'); print('Has TAVILY_API_KEY:', bool(k)); assert k, 'TAVILY_API_KEY missing in CI (set repo secret TAVILY_API_KEY)'"
+
       - name: Run tests (with selected marker)
         env:
           TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
@@ -48,17 +60,26 @@ jobs:
           case "${{ github.event.inputs.test_suite }}" in
             "Positive test cases") MARKER="-m positive" ;;
             "Negative test cases") MARKER="-m negative" ;;
-            "Edge test cases")     MARKER="-m edge";;
+            "Edge test cases")     MARKER="-m edge" ;;
             *) MARKER="" ;;  # All Test cases
           esac
           pytest $MARKER --alluredir=allure-results --clean-alluredir -q
 
-      # Even if pytest fails, still generate & upload the report
       - name: Generate Allure HTML report
         if: always()
         run: |
           allure generate allure-results -o allure-report --clean
 
+      # (optional) quick listing to debug blank reports
+      - name: List report contents
+        if: always()
+        run: |
+          echo "=== allure-report ==="
+          ls -lah allure-report
+          echo "=== allure-report/data ==="
+          ls -lah allure-report/data || true
+
+      # Keep downloadable artifacts for 30 days
       - name: Upload Allure results (raw)
         if: always()
         uses: actions/upload-artifact@v4
@@ -74,3 +95,23 @@ jobs:
           name: allure-report
           path: allure-report
           retention-days: 30
+
+      # Upload the Pages artifact so we can deploy it as a website
+      - name: Upload Pages artifact
+        if: always()
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./allure-report
+
+  # Publish to GitHub Pages (viewable online)
+  deploy-pages:
+    needs: tests
+    if: always()  # publish even if tests failed
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

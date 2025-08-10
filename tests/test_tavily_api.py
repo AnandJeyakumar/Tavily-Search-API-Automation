@@ -1,3 +1,4 @@
+import os
 import time
 from urllib.parse import urlparse
 import pytest
@@ -16,7 +17,11 @@ warnings.filterwarnings("ignore", category=PytestUnknownMarkWarning)
 
 
 
-tavily = TavilyClient(api_key="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")
+API_KEY = os.getenv("TAVILY_API_KEY")
+if not API_KEY:
+    raise RuntimeError("TAVILY_API_KEY not set. Set the env var or add a GitHub Actions secret.")
+tavily = TavilyClient(api_key=API_KEY)
+
 
 
 # ------------------------
