@@ -393,7 +393,7 @@ def test_country_invalid_value_raises_error():
 
 @pytest.mark.edge
 @allure.severity(allure.severity_level.MINOR)
-@pytest.mark.skip("Expected is unknown")
+@pytest.mark.xfail(reason = "Country with topic news is not allowed")
 def test_country_with_topic_news_is_ignored():
     payload = {
         "query": "football",
@@ -401,6 +401,7 @@ def test_country_with_topic_news_is_ignored():
         "country": "portugal"
     }
     response, latency_ms = search_with_timer(**payload)
+    assert_tavily_exception_error(response,exception_messages["Country with topic news is not allowed"],BadRequestError)
     basic_response_validations_with_allure_config(response, payload, latency_ms)
 
 # ------------------------
