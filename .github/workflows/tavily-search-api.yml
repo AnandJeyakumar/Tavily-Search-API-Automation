@@ -13,11 +13,16 @@ on:
           - Negative test cases
           - Edge test cases
 
-# needed for Pages deployment
+# Required for GitHub Pages deployment
 permissions:
   contents: read
   pages: write
   id-token: write
+
+# Avoid parallel deployments fighting each other
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
 
 jobs:
   tests:
@@ -70,8 +75,7 @@ jobs:
         run: |
           allure generate allure-results -o allure-report --clean
 
-      # (optional) quick listing to debug blank reports
-      - name: List report contents
+      - name: List report contents (debug)
         if: always()
         run: |
           echo "=== allure-report ==="
@@ -96,14 +100,18 @@ jobs:
           path: allure-report
           retention-days: 30
 
-      # Upload the Pages artifact so we can deploy it as a website
+      # REQUIRED: configure Pages before uploading the site
+      - name: Configure GitHub Pages
+        if: always()
+        uses: actions/configure-pages@v5
+
+      # Upload the built site for Pages
       - name: Upload Pages artifact
         if: always()
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./allure-report
 
-  # Publish to GitHub Pages (viewable online)
   deploy-pages:
     needs: tests
     if: always()  # publish even if tests failed
