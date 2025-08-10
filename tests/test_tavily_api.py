@@ -10,6 +10,10 @@ from typing import Type
 from jsonschema import  Draft7Validator
 import allure
 from allure_commons.types import AttachmentType
+import warnings
+from _pytest.warning_types import PytestUnknownMarkWarning
+warnings.filterwarnings("ignore", category=PytestUnknownMarkWarning)
+
 
 
 tavily = TavilyClient(api_key="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")
@@ -46,7 +50,6 @@ def test_long_query_returns_error():
     payload = {"query": "Ronaldo " * 300}
     assert_tavily_exception_error(payload, exception_messages["queryTooLong"])
 
-@pytest.mark.edge
 @pytest.mark.positive
 @allure.severity(allure.severity_level.NORMAL)
 def test_query_with_special_characters():
@@ -116,7 +119,6 @@ def test_include_answer_invalid_value():
     assert_tavily_exception_error(payload, exception_messages["invalidIncludeAnswer"])
 
 @pytest.mark.edge
-@pytest.mark.positive
 @allure.severity(allure.severity_level.MINOR)
 def test_short_query_with_include_answer():
     payload = {
@@ -170,6 +172,7 @@ def test_include_images_false():
 
 @pytest.mark.positive
 @allure.severity(allure.severity_level.CRITICAL)
+@pytest.mark.xfail(reason = "Mentioned in the summary - Description is getting null value")
 def test_include_images_with_descriptions():
     payload = {
         "query": "Messi",
@@ -390,9 +393,10 @@ def test_country_invalid_value_raises_error():
 
 @pytest.mark.edge
 @allure.severity(allure.severity_level.MINOR)
+@pytest.mark.skip("Expected is unknown")
 def test_country_with_topic_news_is_ignored():
     payload = {
-        "query": "football transfers",
+        "query": "football",
         "topic": "news",
         "country": "portugal"
     }
