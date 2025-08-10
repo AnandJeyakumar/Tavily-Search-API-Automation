@@ -168,7 +168,7 @@ def test_include_images_false():
 
 @pytest.mark.positive
 @allure.severity(allure.severity_level.CRITICAL)
-@pytest.mark.xfail(reason = "Mentioned in the summary - Description is getting null value")
+# @pytest.mark.xfail(reason = "Mentioned in the summary - Description is getting null value")
 def test_include_images_with_descriptions():
     payload = {
         "query": "Messi",
@@ -187,7 +187,7 @@ def test_include_images_with_descriptions():
         assert len(img["description"]) > 0
 
 @pytest.mark.edge
-@pytest.mark.xfail(reason="Docs say image descriptions should only be returned when include_images=True. Backend still returns them without include_images.", strict=False)
+# @pytest.mark.xfail(reason="Docs say image descriptions should only be returned when include_images=True. Backend still returns them without include_images.", strict=False)
 @allure.severity(allure.severity_level.MINOR)
 def test_descriptions_without_images_but_with_include_image_descriptions():
     payload = {
@@ -350,7 +350,7 @@ def test_max_results_invalid_negative():
     assert_tavily_exception_error(payload,exception_messages["invalidMaxResults"])
 
 @pytest.mark.negative
-@pytest.mark.xfail(reason="Docs say max_results <= 20, backend accepts >20 (up to 100)", strict=False)
+# @pytest.mark.xfail(reason="Docs say max_results <= 20, backend accepts >20 (up to 100)", strict=False)
 @allure.severity(allure.severity_level.CRITICAL)
 def test_max_results_invalid_above_range():
     payload = {
@@ -383,7 +383,7 @@ def test_country_invalid_value_raises_error():
 
 @pytest.mark.edge
 @allure.severity(allure.severity_level.MINOR)
-@pytest.mark.xfail(reason = "Country with topic news is not allowed")
+# @pytest.mark.xfail(reason = "Country with topic news is not allowed")
 def test_country_with_topic_news_is_ignored():
     payload = {
         "query": "football",
@@ -418,7 +418,7 @@ def test_chunks_per_source_valid_with_advanced(cps):
             assert chunks_seen <= cps, f"Expected ≤{cps} chunks, got {chunks_seen}"
 
 @pytest.mark.negative
-@pytest.mark.xfail(reason="Docs say chunks_per_source <= 3, backend allows 4.")
+# @pytest.mark.xfail(reason="Docs say chunks_per_source <= 3, backend allows 4.")
 @pytest.mark.parametrize("cps", [0,4])
 @allure.severity(allure.severity_level.CRITICAL)
 def test_chunks_per_source_out_of_range_raises_error(cps):
@@ -610,7 +610,7 @@ def test_include_domains_limit_enforced_301_raises():
 
 
 @pytest.mark.negative
-@pytest.mark.xfail(reason = "In Document its mentioned as Max 150 , but in message it is Max 130")
+# @pytest.mark.xfail(reason = "In Document its mentioned as Max 150 , but in message it is Max 130")
 @allure.severity(allure.severity_level.CRITICAL)
 def test_exclude_domains_limit_enforced_151_raises():
     big_list = [f"site{i}.com" for i in range(151)]

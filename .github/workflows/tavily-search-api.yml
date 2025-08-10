@@ -76,7 +76,7 @@ jobs:
           esac
           PARALLEL_FLAG=""
           case "${{ github.event.inputs.parallel }}" in
-            "Yes (run in parallel)") PARALLEL_FLAG="-n auto" ;;   # requires pytest-xdist
+            "Yes (run in parallel)") PARALLEL_FLAG="-n auto" ;;  
             *) PARALLEL_FLAG="" ;;
           esac
           # Re-run failing tests up to 2 times, 3s delay
